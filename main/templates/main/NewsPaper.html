@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ paperNews.TitleNews }}
+{% endblock %}
+
+{% block content %}
+    <h4 class="from-control">{{ paperNews.TitleNews }}</h4>
+    <div class="card w-75">
+        <img src="{{ paperNews.Image.url }}">
+    </div><br>
+    <h2 class="from-control">{{ paperNews.SomeNews }}</h2>
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="">Автор: {{ paperNews.Author }}</p>
+        <p class="">Дата публикации: {{ paperNews.TimeCreate }}</p>
+    </div>
+    {% for tag in paperNews.Tags.all %}
+    <a href="/?search={{ tag }}" class="btn btn-sm btn-outline-secondary">{{ tag }}</a>
+    {% endfor %}
+{% endblock %}

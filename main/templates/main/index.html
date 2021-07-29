@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for el in context %}
+            <div class="col-sm">
+                <div class="card shadow-xs">
+                    <img src="{{ el.news.Image.url }}" class="card-img-top img-fluid">
+                    <div class="card-body">
+                    <a href="NewsPaper?id={{ el.news.id }}" class="stretched-link"></a>
+                        <h3 class="card-text">{{ el.news.TitleNews }}</h3>
+                        <p class="card-text">Автор: {{ el.news.Author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group" style="z-index:2">
+                                {% for tag in el.news.Tags.all %}
+                                    <a href="/?search={{ tag }}" class="btn btn-sm btn-outline-secondary">{{ tag }}</a>
+                                {% endfor %}
+                            </div>
+                            <p class="card-text text-end">{{ el.delta }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+
+

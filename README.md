@@ -1,4 +1,4 @@
-# news_site
+# NewsSite
 Веб-приложение для просмотра и создания новостей.
 
 ## Development workflow
